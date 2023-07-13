@@ -66,14 +66,22 @@ SOURCES +=  \
     $$PWD/src/ReadBarcode.cpp \
     $$PWD/src/ResultPoint.cpp \
     $$PWD/src/HRI.cpp \
+    $$PWD/src/MultiFormatReader.cpp \
+    $$PWD/src/ReedSolomonDecoder.cpp \
+    $$PWD/src/TextDecoder.cpp \
+    $$PWD/src/WhiteRectDetector.cpp \
     $$PWD/src/aztec/AZDecoder.cpp \
     $$PWD/src/aztec/AZDetector.cpp \
     $$PWD/src/aztec/AZReader.cpp \
     $$PWD/src/datamatrix/DMDecoder.cpp \
     $$PWD/src/datamatrix/DMDetector.cpp \
     $$PWD/src/datamatrix/DMReader.cpp \
+    $$PWD/src/datamatrix/DMBitLayout.cpp \
+    $$PWD/src/datamatrix/DMDataBlock.cpp \
+    $$PWD/src/datamatrix/DMVersion.cpp \
     $$PWD/src/maxicode/MCDecoder.cpp \
     $$PWD/src/maxicode/MCReader.cpp \
+    $$PWD/src/maxicode/MCBitMatrixParser.cpp \
     $$PWD/src/oned/ODCodabarReader.cpp \
     $$PWD/src/oned/ODCode128Reader.cpp \
     $$PWD/src/oned/ODCode39Reader.cpp \
@@ -85,38 +93,29 @@ SOURCES +=  \
     $$PWD/src/oned/ODMultiUPCEANReader.cpp \
     $$PWD/src/oned/ODReader.cpp \
     $$PWD/src/oned/ODRowReader.cpp \
+    $$PWD/src/oned/ODCode128Patterns.cpp \
+    $$PWD/src/oned/ODDataBarCommon.cpp \
+    $$PWD/src/oned/ODUPCEANCommon.cpp \
+    $$PWD/src/pdf417/PDFBarcodeValue.cpp \
+    $$PWD/src/pdf417/PDFBoundingBox.cpp \
     $$PWD/src/pdf417/PDFCodewordDecoder.cpp \
+    $$PWD/src/pdf417/PDFDecoder.cpp \
+    $$PWD/src/pdf417/PDFDetectionResult.cpp \
+    $$PWD/src/pdf417/PDFDetectionResultColumn.cpp \
     $$PWD/src/pdf417/PDFDetector.cpp \
+    $$PWD/src/pdf417/PDFModulusGF.cpp \
+    $$PWD/src/pdf417/PDFModulusPoly.cpp \
     $$PWD/src/pdf417/PDFReader.cpp \
     $$PWD/src/pdf417/PDFScanningDecoder.cpp \
     $$PWD/src/qrcode/QRDecoder.cpp \
     $$PWD/src/qrcode/QRDetector.cpp \
     $$PWD/src/qrcode/QRReader.cpp \
-    $$PWD/src/MultiFormatReader.cpp \
-    $$PWD/src/ReedSolomonDecoder.cpp \
-    $$PWD/src/TextDecoder.cpp \
-    $$PWD/src/WhiteRectDetector.cpp \
-    $$PWD/src/oned/ODCode128Patterns.cpp \
-    $$PWD/src/datamatrix/DMBitLayout.cpp \
-    $$PWD/src/datamatrix/DMDataBlock.cpp \
-    $$PWD/src/datamatrix/DMVersion.cpp \
-    $$PWD/src/oned/ODDataBarCommon.cpp \
-    $$PWD/src/oned/ODUPCEANCommon.cpp \
-    $$PWD/src/maxicode/MCBitMatrixParser.cpp \
-    $$PWD/src/pdf417/PDFDecodedBitStreamParser.cpp \
     $$PWD/src/qrcode/QRBitMatrixParser.cpp \
     $$PWD/src/qrcode/QRDataBlock.cpp \
     $$PWD/src/qrcode/QRCodecMode.cpp \
     $$PWD/src/qrcode/QRVersion.cpp \
     $$PWD/src/qrcode/QRFormatInformation.cpp \
     $$PWD/src/qrcode/QRErrorCorrectionLevel.cpp \
-    $$PWD/src/pdf417/PDFBoundingBox.cpp \
-    $$PWD/src/pdf417/PDFDetectionResult.cpp \
-    $$PWD/src/pdf417/PDFDetectionResultColumn.cpp \
-    $$PWD/src/pdf417/PDFBarcodeValue.cpp \
-    $$PWD/src/pdf417/PDFModulusPoly.cpp \
-    $$PWD/src/pdf417/PDFModulusGF.cpp
-
 
 
 HEADERS += \
@@ -140,14 +139,22 @@ HEADERS += \
     $$PWD/src/ResultPoint.h \
     $$PWD/src/StructuredAppend.h \
     $$PWD/src/ThresholdBinarizer.h \
+    $$PWD/src/MultiFormatReader.h \
+    $$PWD/src/Reader.h \
+    $$PWD/src/ReedSolomonDecoder.h \
+    $$PWD/src/WhiteRectDetector.h \
     $$PWD/src/aztec/AZDecoder.h \
     $$PWD/src/aztec/AZDetector.h \
     $$PWD/src/aztec/AZReader.h \
     $$PWD/src/datamatrix/DMDecoder.h \
     $$PWD/src/datamatrix/DMDetector.h \
     $$PWD/src/datamatrix/DMReader.h \
+    $$PWD/src/datamatrix/DMBitLayout.h \
+    $$PWD/src/datamatrix/DMDataBlock.h \
+    $$PWD/src/datamatrix/DMVersion.h \
     $$PWD/src/maxicode/MCDecoder.h \
     $$PWD/src/maxicode/MCReader.h \
+    $$PWD/src/maxicode/MCBitMatrixParser.h \
     $$PWD/src/oned/ODCodabarReader.h \
     $$PWD/src/oned/ODCode128Reader.h \
     $$PWD/src/oned/ODCode39Reader.h \
@@ -159,34 +166,29 @@ HEADERS += \
     $$PWD/src/oned/ODMultiUPCEANReader.h \
     $$PWD/src/oned/ODReader.h \
     $$PWD/src/oned/ODRowReader.h \
+    $$PWD/src/oned/ODCode128Patterns.h \
+    $$PWD/src/oned/ODDataBarCommon.h \
+    $$PWD/src/oned/ODUPCEANCommon.h \
+    $$PWD/src/pdf417/PDFBarcodeMetadata.h \
+    $$PWD/src/pdf417/PDFBarcodeValue.h \
+    $$PWD/src/pdf417/PDFBoundingBox.h \
+    $$PWD/src/pdf417/PDFCodeword.h \
     $$PWD/src/pdf417/PDFCodewordDecoder.h \
+    $$PWD/src/pdf417/PDFDecoder.h \
+    $$PWD/src/pdf417/PDFDecoderResultExtra.h \
+    $$PWD/src/pdf417/PDFDetectionResult.h \
+    $$PWD/src/pdf417/PDFDetectionResultColumn.h \
     $$PWD/src/pdf417/PDFDetector.h \
+    $$PWD/src/pdf417/PDFModulusGF.h \
+    $$PWD/src/pdf417/PDFModulusPoly.h \
     $$PWD/src/pdf417/PDFReader.h \
     $$PWD/src/pdf417/PDFScanningDecoder.h \
     $$PWD/src/qrcode/QRDecoder.h \
     $$PWD/src/qrcode/QRDetector.h \
     $$PWD/src/qrcode/QRReader.h \
-    $$PWD/src/MultiFormatReader.h \
-    $$PWD/src/Reader.h \
-    $$PWD/src/ReedSolomonDecoder.h \
-    $$PWD/src/WhiteRectDetector.h \
-    $$PWD/src/oned/ODCode128Patterns.h \
-    $$PWD/src/datamatrix/DMBitLayout.h \
-    $$PWD/src/datamatrix/DMDataBlock.h \
-    $$PWD/src/datamatrix/DMVersion.h \
-    $$PWD/src/oned/ODDataBarCommon.h \
-    $$PWD/src/oned/ODUPCEANCommon.h \
-    $$PWD/src/maxicode/MCBitMatrixParser.h \
-    $$PWD/src/pdf417/PDFDecodedBitStreamParser.h \
     $$PWD/src/qrcode/QRBitMatrixParser.h \
     $$PWD/src/qrcode/QRDataBlock.h \
     $$PWD/src/qrcode/QRCodecMode.h \
     $$PWD/src/qrcode/QRVersion.h \
     $$PWD/src/qrcode/QRFormatInformation.h \
     $$PWD/src/qrcode/QRErrorCorrectionLevel.h \
-    $$PWD/src/pdf417/PDFBoundingBox.h \
-    $$PWD/src/pdf417/PDFDetectionResult.h \
-    $$PWD/src/pdf417/PDFDetectionResultColumn.h \
-    $$PWD/src/pdf417/PDFBarcodeValue.h \
-    $$PWD/src/pdf417/PDFModulusPoly.h \
-    $$PWD/src/pdf417/PDFModulusGF.h
