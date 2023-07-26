@@ -1,5 +1,7 @@
 #common
 
+INCLUDEPATH += $$PWD/src
+
 SOURCES +=  \
         $$PWD/src/BarcodeFormat.cpp \
         $$PWD/src/BitArray.cpp \
