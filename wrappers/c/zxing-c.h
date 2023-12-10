@@ -12,12 +12,12 @@
 
 #ifdef __cplusplus
 
-#include "DecodeHints.h"
+#include "ReaderOptions.h"
 #include "ImageView.h"
 #include "Result.h"
 
 typedef ZXing::ImageView zxing_ImageView;
-typedef ZXing::DecodeHints zxing_DecodeHints;
+typedef ZXing::ReaderOptions zxing_ReaderOptions;
 typedef ZXing::Result zxing_Result;
 typedef ZXing::Results zxing_Results;
 
@@ -26,7 +26,7 @@ extern "C"
 #else
 
 typedef struct zxing_ImageView zxing_ImageView;
-typedef struct zxing_DecodeHints zxing_DecodeHints;
+typedef struct zxing_ReaderOptions zxing_ReaderOptions;
 typedef struct zxing_Result zxing_Result;
 typedef struct zxing_Results zxing_Results;
 
@@ -76,13 +76,15 @@ typedef enum
 	zxing_BarcodeFormat_UPCA = (1 << 14),
 	zxing_BarcodeFormat_UPCE = (1 << 15),
 	zxing_BarcodeFormat_MicroQRCode = (1 << 16),
+	zxing_BarcodeFormat_RMQRCode = (1 << 17),
 
 	zxing_BarcodeFormat_LinearCodes = zxing_BarcodeFormat_Codabar | zxing_BarcodeFormat_Code39 | zxing_BarcodeFormat_Code93
 									  | zxing_BarcodeFormat_Code128 | zxing_BarcodeFormat_EAN8 | zxing_BarcodeFormat_EAN13
 									  | zxing_BarcodeFormat_ITF | zxing_BarcodeFormat_DataBar | zxing_BarcodeFormat_DataBarExpanded
 									  | zxing_BarcodeFormat_UPCA | zxing_BarcodeFormat_UPCE,
 	zxing_BarcodeFormat_MatrixCodes = zxing_BarcodeFormat_Aztec | zxing_BarcodeFormat_DataMatrix | zxing_BarcodeFormat_MaxiCode
-									  | zxing_BarcodeFormat_PDF417 | zxing_BarcodeFormat_QRCode | zxing_BarcodeFormat_MicroQRCode,
+									  | zxing_BarcodeFormat_PDF417 | zxing_BarcodeFormat_QRCode | zxing_BarcodeFormat_MicroQRCode
+									  | zxing_BarcodeFormat_RMQRCode,
 	zxing_BarcodeFormat_Any = zxing_BarcodeFormat_LinearCodes | zxing_BarcodeFormat_MatrixCodes,
 
 	zxing_BarcodeFormat_Invalid = -1 /* return value when BarcodeFormatsFromString() throws */
@@ -95,7 +97,7 @@ zxing_BarcodeFormat zxing_BarcodeFormatFromString(const char* str);
 char* zxing_BarcodeFormatToString(zxing_BarcodeFormat format);
 
 /*
- * ZXing/DecodeHints.h
+ * ZXing/ReaderOptions.h
  */
 
 typedef enum
@@ -122,19 +124,20 @@ typedef enum
 	zxing_TextMode_Escaped,
 } zxing_TextMode;
 
-zxing_DecodeHints* zxing_DecodeHints_new();
-void zxing_DecodeHints_delete(zxing_DecodeHints* hints);
+zxing_ReaderOptions* zxing_ReaderOptions_new();
+void zxing_ReaderOptions_delete(zxing_ReaderOptions* opts);
 
-void zxing_DecodeHints_setTryHarder(zxing_DecodeHints* hints, bool tryHarder);
-void zxing_DecodeHints_setTryRotate(zxing_DecodeHints* hints, bool tryRotate);
-void zxing_DecodeHints_setTryInvert(zxing_DecodeHints* hints, bool tryInvert);
-void zxing_DecodeHints_setTryDownscale(zxing_DecodeHints* hints, bool tryDownscale);
-void zxing_DecodeHints_setIsPure(zxing_DecodeHints* hints, bool isPure);
-void zxing_DecodeHints_setReturnErrors(zxing_DecodeHints* hints, bool returnErrors);
-void zxing_DecodeHints_setFormats(zxing_DecodeHints* hints, zxing_BarcodeFormats formats);
-void zxing_DecodeHints_setBinarizer(zxing_DecodeHints* hints, zxing_Binarizer binarizer);
-void zxing_DecodeHints_setEanAddOnSymbol(zxing_DecodeHints* hints, zxing_EanAddOnSymbol eanAddOnSymbol);
-void zxing_DecodeHints_setTextMode(zxing_DecodeHints* hints, zxing_TextMode textMode);
+void zxing_ReaderOptions_setTryHarder(zxing_ReaderOptions* opts, bool tryHarder);
+void zxing_ReaderOptions_setTryRotate(zxing_ReaderOptions* opts, bool tryRotate);
+void zxing_ReaderOptions_setTryInvert(zxing_ReaderOptions* opts, bool tryInvert);
+void zxing_ReaderOptions_setTryDownscale(zxing_ReaderOptions* opts, bool tryDownscale);
+void zxing_ReaderOptions_setIsPure(zxing_ReaderOptions* opts, bool isPure);
+void zxing_ReaderOptions_setReturnErrors(zxing_ReaderOptions* opts, bool returnErrors);
+void zxing_ReaderOptions_setFormats(zxing_ReaderOptions* opts, zxing_BarcodeFormats formats);
+void zxing_ReaderOptions_setBinarizer(zxing_ReaderOptions* opts, zxing_Binarizer binarizer);
+void zxing_ReaderOptions_setEanAddOnSymbol(zxing_ReaderOptions* opts, zxing_EanAddOnSymbol eanAddOnSymbol);
+void zxing_ReaderOptions_setTextMode(zxing_ReaderOptions* opts, zxing_TextMode textMode);
+void zxing_ReaderOptions_setMaxNumberOfSymbols(zxing_ReaderOptions* opts, int n);
 
 /*
  * ZXing/Result.h
@@ -168,8 +171,8 @@ bool zxing_Result_isMirrored(const zxing_Result* result);
  * ZXing/ReadBarcode.h
  */
 
-zxing_Result* zxing_ReadBarcode(const zxing_ImageView* iv, const zxing_DecodeHints* hints);
-zxing_Results* zxing_ReadBarcodes(const zxing_ImageView* iv, const zxing_DecodeHints* hints);
+zxing_Result* zxing_ReadBarcode(const zxing_ImageView* iv, const zxing_ReaderOptions* opts);
+zxing_Results* zxing_ReadBarcodes(const zxing_ImageView* iv, const zxing_ReaderOptions* opts);
 
 void zxing_Result_delete(zxing_Result* result);
 void zxing_Results_delete(zxing_Results* results);

@@ -4,9 +4,9 @@ plugins {
 }
 
 android {
-    namespace = "com.example.zxingcppdemo"
+    namespace = "zxingcpp.app"
     defaultConfig {
-        applicationId = "com.example.zxingdemo"
+        applicationId = "io.github.zxingcpp.app"
         compileSdk = libs.versions.androidCompileSdk.get().toInt()
         minSdk = 26 // for the adaptive icons. TODO: remove adaptive icons and lower to API 21
         targetSdk = libs.versions.androidTargetSdk.get().toInt()
@@ -43,8 +43,8 @@ dependencies {
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.androidx.camera.view)
-    implementation(libs.google.material)
+    implementation(libs.android.material)
 
     // Java "upstream" version of zxing (to compare performance)
-    implementation(libs.google.zxing)
+    implementation(libs.zxing.core)
 }
